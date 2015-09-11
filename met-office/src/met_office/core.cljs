@@ -2,9 +2,12 @@
     (:require[om.core :as om :include-macros true]
              [om.dom :as dom :include-macros true]
              [goog.string :as gstring]
-             [goog.string.format]))
+             [goog.string.format]
+             [met-office.validation :as v]))
 
 (enable-console-print!)
+
+(println "3 +4 " (v/foo 3 4))
 
 (println "Met Office API demonstration")
 
