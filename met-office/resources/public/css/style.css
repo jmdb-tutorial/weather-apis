@@ -1,2 +1,17 @@
-/* some style */
+ul  {
+    list-style:none;
+    padding:0;
+    margin:0;
+            
+}
+
+li {
+    padding-bottom:10px;
+}
+
+.key {
+    padding-right:10px;
+    font-weight: bold;
+
+}
 

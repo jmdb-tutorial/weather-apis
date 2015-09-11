@@ -25,25 +25,32 @@
     om/IRenderState
     (render-state [this state]
       (let [href (format-link (:link api-url) (:api-key state))]
-        (dom/li nil              
-                (dom/a #js {:href href} href))))))
+        (dom/li nil               
+                (dom/span #js {:className "key"} (name (:key api-url)))
+                (dom/a #js {:href href :target (name (:key api-url))} href))))))
 
+
+(defn handle-change [e owner {:keys [api-key]}]
+  (let [value (.. e -target -value)]
+    (om/set-state! owner :api-key value)))
 
 (defn api-links-view [data owner]
   (reify
     om/IInitState
     (init-state [_] {:api-key "<api key here>"})
     om/IRenderState
-    (render-state [this state]
+    (render-state [this state]      
       (dom/div nil
                (dom/div nil
                         (dom/label nil "API-KEY: ")
-                        (dom/input #js {:type "text" :ref "api-key" :value (:api-key state)}))
+                        (dom/input #js {:size 60 :type "text" :ref "api-key" :value (:api-key state)
+                                        :onChange #(handle-change % owner state)}))
                (dom/div nil
                         (dom/h2 nil "Available links")
                         (apply dom/ul nil
                                (om/build-all api-link-view (:api-urls data)
-                                             {:init-state state}))
+                                             {:init-state state
+                                              :state state}))
                         )))))
 
 (om/root api-links-view app-state
