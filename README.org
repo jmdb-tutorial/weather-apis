@@ -1,0 +1,6 @@
+# Weather apis demonstrations
+
+## Met Office
+
+You need an api key which you can get from http://www.metoffice.gov.uk/
+
