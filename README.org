@@ -1,6 +1,11 @@
 # Weather apis demonstrations
 
+You will need leiningen installed
+
 ## Met Office
+
+
 
 You need an api key which you can get from http://www.metoffice.gov.uk/
 
+Then go into met-office and type `lein figwheel`
